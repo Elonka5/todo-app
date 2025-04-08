@@ -14,11 +14,9 @@ export const createTodo = async (todo) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(todo),
+    body: JSON.stringify({ ...todo, completed: false }),
   });
-
-  const data = await res.json();
-  return NextResponse.json(data);
+  return res.json();
 };
 
 export const deleteTodo = async (id) => {
